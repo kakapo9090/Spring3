@@ -1,5 +1,7 @@
 package com.iu.s1.bankbook;
 
+import java.util.ArrayList;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,20 +12,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.s1.util.DBConnector;
+
 @Controller
 @RequestMapping("/bankbook/*")
 public class BankbookController {
 	//pojo? -> (Plain Old Java Object)
 	
-	//동일한 파라미터가 여러개 넘어올 때 작성
+	private BankbookService bankbookService;
+	
+	public BankbookController() {
+		bankbookService = new BankbookService();
+	}
+	
+	
 	@RequestMapping(value="bankbookList.do", method = RequestMethod.GET)
-	public ModelAndView list(Integer [] num, ModelAndView mv) {
-		for(Integer i : num) {
-			System.out.println(i);
-		}
+	public ModelAndView list(ModelAndView mv) {
+		ArrayList<BankbookDTO> ar = bankbookService.getList();
+		
 		System.out.println("Bankbook List");
 		
 		//ModelAndView mv = new ModelAndView();
+		mv.addObject("list", ar);
 		mv.setViewName("bankbook/bankbookList");
 		return mv;
 	}
