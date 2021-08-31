@@ -10,17 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.iu.s1.util.DBConnector;
-@Repository
+
 public class BankbookDAO {
 
 	private DBConnector dbConnector;
 	
-	public BankbookDAO() {
+
 	
-	}
-	
-	@Autowired
-	public BankbookDAO(DBConnector dbConnector) {
+	//root-context.xml 
+	public BankbookDAO(DBConnector dbConnector, int num, String name) {
 		this.dbConnector = dbConnector;
 	}
 	
