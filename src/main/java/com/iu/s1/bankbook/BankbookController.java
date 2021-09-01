@@ -1,8 +1,11 @@
 package com.iu.s1.bankbook;
 
+import java.util.ArrayList;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,13 +18,18 @@ import org.springframework.web.servlet.ModelAndView;
 public class BankbookController {
 	//pojo? -> (Plain Old Java Object)
 	
+	@Autowired
+	private BankbookService bankbookService;
+	
 	//동일한 파라미터가 여러개 넘어올 때 작성
 	@RequestMapping(value="bankbookList.do", method = RequestMethod.GET)
-	public ModelAndView list(Integer [] num, ModelAndView mv) {
-		for(Integer i : num) {
-			System.out.println(i);
+	public ModelAndView list(ModelAndView mv) {
+		
+		ArrayList<BankbookDTO> ar =bankbookService.getList();
+		
+		for(BankbookDTO bankbookDTO:ar) {
+			System.out.println(bankbookDTO.getBookName());
 		}
-		System.out.println("Bankbook List");
 		
 		//ModelAndView mv = new ModelAndView();
 		mv.setViewName("bankbook/bankbookList");
