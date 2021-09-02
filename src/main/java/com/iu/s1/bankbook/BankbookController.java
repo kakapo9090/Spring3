@@ -1,8 +1,11 @@
 package com.iu.s1.bankbook;
 
+import java.util.List;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,35 +16,35 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/bankbook/*")
 public class BankbookController {
+	
+	@Autowired
+	private BankbookService bankbookService;
+	
 	//pojo? -> (Plain Old Java Object)
 	
 	//동일한 파라미터가 여러개 넘어올 때 작성
-	@RequestMapping(value="bankbookList.do", method = RequestMethod.GET)
-	public ModelAndView list(Integer [] num, ModelAndView mv) {
-		for(Integer i : num) {
-			System.out.println(i);
-		}
-		System.out.println("Bankbook List");
+	@RequestMapping("bankbookList")
+	public ModelAndView list(ModelAndView mv) {
+	
+		List<BankbookDTO> ar = bankbookService.getList();
 		
-		//ModelAndView mv = new ModelAndView();
+		mv.addObject("list", ar);
 		mv.setViewName("bankbook/bankbookList");
+
 		return mv;
 	}
 	
 	
 	
 	@RequestMapping("bankbookSelect")
-	public void select(@RequestParam(defaultValue = "1", value = "n") Integer num, String name, Model model) {
+	public void select(BankbookDTO bankbookDTO, Model model) {
 		
-		System.out.println("Value : "+num);
-		System.out.println("name : "+name);
-		BankbookDTO bankbookDTO = new BankbookDTO();
-		bankbookDTO.setBookName("BookName");
+		bankbookDTO = bankbookService.getSelect(bankbookDTO);
+		model.addAttribute("dtov", bankbookDTO);
 		
-		model.addAttribute("dto", bankbookDTO);
-		model.addAttribute("test", "iu");
-		//return "bankbook/bankbookSelect";
 	}
+	
+	
 	@RequestMapping("bankbookInsert.do")
 	public String insert(BankbookDTO bankbookDTO) {
 		System.out.println(bankbookDTO.getBookName());

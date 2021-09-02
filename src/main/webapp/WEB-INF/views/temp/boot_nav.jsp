@@ -12,7 +12,7 @@
           <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${pageContext.request.contextPath}/bankbook/bankbookList.do">Bankbook</a>
+          <a class="nav-link" href="${pageContext.request.contextPath}/bankbook/bankbookList">Bankbook</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Pricing</a>
