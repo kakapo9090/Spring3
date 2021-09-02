@@ -27,6 +27,7 @@ public class BankbookDAO {
 	}
 	
 	public BankbookDTO getSelect(BankbookDTO bankbookDTO) {
+		System.out.println("DAO : "+bankbookDTO.getBookNumber());
 		return sqlSession.selectOne(NAMESPACE+"getSelect", bankbookDTO);
 
 	}

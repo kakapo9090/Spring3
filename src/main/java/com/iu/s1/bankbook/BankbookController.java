@@ -38,17 +38,18 @@ public class BankbookController {
 	
 	@RequestMapping("bankbookSelect")
 	public void select(BankbookDTO bankbookDTO, Model model) {
+//		System.out.println("Select");
+//		System.out.println(bankbookDTO.getBookNumber());
 		
 		bankbookDTO = bankbookService.getSelect(bankbookDTO);
-		model.addAttribute("dtov", bankbookDTO);
+		System.out.println("Name : " + bankbookDTO.getBookName());
+		model.addAttribute("dto", bankbookDTO);
 		
 	}
 	
 	
-	@RequestMapping("bankbookInsert.do")
-	public String insert(BankbookDTO bankbookDTO) {
-		System.out.println(bankbookDTO.getBookName());
-		System.out.println("insert");
-		return "redirect:../";
+	@RequestMapping("bankbookInsert")
+	public void insert(BankbookDTO bankbookDTO) {
+		
 	}
 }

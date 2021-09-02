@@ -11,20 +11,22 @@
 	<c:import url="../temp/boot_nav.jsp"></c:import>
 	<h1>List Renewal</h1>
 	
-	<div class="container-fluid"></div>
-		<div class="col-md-8 mx-auto my-0">
-		<table class="table table-dark table-striped">
+	<div class="container-fluid">
+		<div class="col-md-8 mx-auto my-auto">
+		<table class="table table-dark table-hover">
 			<tr>
 				<th>Number</th><th>Name</th><th>Rate</th>
 			</tr>
-		<c:forEach items="${list }" var="dto">
+		<c:forEach items="${list }" var="dto"> <!-- 북넘버컨트롤러의 애드오브젝트 "list" -->
 			<tr>
 				<td>${dto.bookNumber}</td>
-				<td>${dto.bookName}</td>
+				<td><a href="./bankbookSelect?bookNumber=${dto.bookNumber}">${dto.bookName}</a></td>
 				<td>${dto.bookRate}</td>
 			</tr>	
 		</c:forEach>
 		</div>
 		</table>
+		
+		<a href="./bankbookInsert" class="btn btn-danger">ADD</a>
 </body>
 </html>
