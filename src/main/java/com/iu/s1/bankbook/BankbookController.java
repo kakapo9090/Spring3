@@ -48,8 +48,14 @@ public class BankbookController {
 	}
 	
 	
-	@RequestMapping("bankbookInsert")
-	public void insert(BankbookDTO bankbookDTO) {
+	@RequestMapping(value="bankbookInsert", method = RequestMethod.GET)
+	public void insert() {}
+	
+	@RequestMapping(value="bankbookInsert", method=RequestMethod.POST)
+	public String insert(BankbookDTO bankbookDTO) {
+		int result = bankbookService.setInsert(bankbookDTO);
 		
+		return "redirect:./bankbookList";
 	}
+	
 }

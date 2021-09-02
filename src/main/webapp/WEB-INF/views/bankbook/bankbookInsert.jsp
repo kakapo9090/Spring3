@@ -25,13 +25,13 @@
 		</div>
 	
 		<div class="form-check">
-		 	<input class="form-check-input" type="radio" name="bookSale" id="flexRadioDefault1">
+		 	<input class="form-check-input" type="radio" name="bookSale" value="1" id="flexRadioDefault1">
 			<label class="form-check-label" for="bookSale">
 			 Sale
 		  	</label>
 		</div>
 		<div class="form-check">
-  			<input class="form-check-input" type="radio" name="bookSale" id="flexRadioDefault2" checked>
+  			<input class="form-check-input" type="radio" name="bookSale" value="0" id="flexRadioDefault2" checked>
 			<label class="form-check-label" for="bookSale">
    			Not Sale
  			</label>
