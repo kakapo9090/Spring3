@@ -58,4 +58,11 @@ public class BankbookController {
 		return "redirect:./bankbookList";
 	}
 	
+	@RequestMapping(value="bankbookDelete")
+	public String Delete(Long bookNumber) {
+		int result = bankbookService.setDelete(bookNumber);
+		
+		return "redirect:./bankbookList";
+	}
+	
 }

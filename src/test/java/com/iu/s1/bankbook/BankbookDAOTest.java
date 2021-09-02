@@ -16,12 +16,12 @@ public class BankbookDAOTest extends MyJunitTest{
 	
 	@Test
 	public void setDeleteTest() {
-		int result = bankbookDAO.setDelete(52L);
+		int result = bankbookDAO.setDelete(11111L);
 		assertEquals(1, result);
 	}
 	
 	
-	@Test
+	//@Test
 	public void setInsertTest() {
 		BankbookDTO bankbookDTO = new BankbookDTO();
 		bankbookDTO.setBookName("Spring");

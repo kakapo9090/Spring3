@@ -5,8 +5,8 @@
   
   <mapper namespace="com.iu.s1.bankbook.BankbookDAO">
   	
-  	<delete id="setDelete" parameterType="java.lang.long">
-  		DELETE FROM BANKBOOK WHERE BOOKNUMBER=#{bookNumber} <!-- 여긴 멤버변수를 쓰지않음 -->
+  	<delete id="setDelete" parameterType="java.lang.Long">
+  		DELETE FROM BANKBOOK WHERE BOOKNUMBER=#{bookNumber} 
   	</delete>
   	
   	
