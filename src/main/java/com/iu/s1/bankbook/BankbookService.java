@@ -5,11 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.iu.s1.util.Pager;
+
 @Service
 public class BankbookService {
 	
 	@Autowired
 	private BankbookDAO bankbookDAO;
+	
+	
+	public int setUpdate(BankbookDTO bankbookDTO) {
+		return bankbookDAO.setUpdate(bankbookDTO);
+	}
 	
 	
 	public int setDelete(Long bookNumber) {
@@ -23,8 +30,10 @@ public class BankbookService {
 	
 	
 	
-	public List<BankbookDTO> getList(){
-		return bankbookDAO.getList();
+	public List<BankbookDTO> getList(Pager pager){
+		pager.makeNum(); 	//페이지번호를 먼저 찾고
+		pager.makeRow();	// 그 다음 행을 찾는다
+		return bankbookDAO.getList(pager);
 	}
 	
 	public BankbookDTO getSelect(BankbookDTO bankbookDTO) {

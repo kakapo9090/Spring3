@@ -9,7 +9,7 @@
 </head>
 <body>
 	<c:import url="../temp/boot_nav.jsp"></c:import>
-	<h1>List Renewal</h1>
+	<h1>List R&nbsp;enewal</h1>
 	
 	<div class="container-fluid">
 		<div class="col-md-8 mx-auto my-auto">
@@ -17,7 +17,7 @@
 			<tr>
 				<th>Number</th><th>Name</th><th>Rate</th>
 			</tr>
-		<c:forEach items="${list }" var="dto"> <!-- 북넘버컨트롤러의 애드오브젝트 "list" -->
+		<c:forEach items="${list }" var="dto">
 			<tr>
 				<td>${dto.bookNumber}</td>
 				<td><a href="./bankbookSelect?bookNumber=${dto.bookNumber}">${dto.bookName}</a></td>
@@ -26,6 +26,42 @@
 		</c:forEach>
 		</div>
 		</table>
+		
+		
+		<!-- pager 응용 -->
+	<nav aria-label="Page navigation example">
+	  <ul class="pagination">
+  
+    <li class="page-item">
+      <a class="page-link" href="./bankbookList" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    
+    <li class="page-item">
+      <a class="page-link" href="./bankbookList?pn=${pager.startNum-1}" aria-label="Previous">
+        <span aria-hidden="true">&lt;</span>
+      </a>
+    </li>
+    
+		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="n">
+			<li class="page-item"><a class="page-link" href="./bankbookList?pn=${n}">${n}</a></li>
+		</c:forEach>
+
+	<li class="page-item">
+      <a class="page-link" href="./bankbookList?pn=${pager.lastNum+1}" aria-label="Next">
+        <span aria-hidden="true">&gt;</span>
+      </a>
+    </li>	
+
+    <li class="page-item">
+      <a class="page-link" href="./bankbookList?pn=${pager.totalPage}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+		
 		
 		<a href="./bankbookInsert" class="btn btn-danger">ADD</a>
 </body>
