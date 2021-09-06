@@ -2,6 +2,9 @@ package com.iu.s1.util;
 
 public class Pager {
 
+	private String kind;
+	private String search;
+	
 	private Long pn;
 	private Long perPage;
 	private Long startRow;
@@ -11,13 +14,15 @@ public class Pager {
 	private Long lastNum;
 	
 	private Long totalPage; //setter는 필요없다
+
+// ==================================================================
 	
 	public void makeRow() {
 		this.startRow = (this.getPn()-1)*this.getPerPage()+1;
 		this.lastRow = this.getPn()*this.getPerPage();
 	}
 	
-	public void makeNum() {
+	public void makeNum(Long totalCount) {
 		//1. totalCount
 		//Long totalCount=214L;
 		
@@ -57,6 +62,33 @@ public class Pager {
 	}
 	
 	
+	
+	
+	
+	
+// ============ setter getter ==============================================	
+	
+	
+	
+	public String getKind() {
+		return kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+
+	public String getSearch() {
+		if(this.search == null) {
+			this.search="";
+		}
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
 	public Long getTotalPage() {
 		return totalPage;
 	}

@@ -35,7 +35,7 @@ public class BankbookDAOTest extends MyJunitTest{
 	}
 	
 	
-	@Test
+	//@Test
 	public void setInsertTest() throws Exception {
 		Random random = new Random();
 		for(int i=0;i<200;i++) {
@@ -58,9 +58,13 @@ public class BankbookDAOTest extends MyJunitTest{
 	}
 	
 	
-	@Test
+	//@Test
 	public void getListTest() {
-		List<BankbookDTO> ar = bankbookDAO.getList(Pager pager);
+		Pager pager = new Pager();
+		pager.setPn(1L);
+		pager.makeNum(totalCount);
+		pager.makeRow();
+		List<BankbookDTO> ar = bankbookDAO.getList(pager);
 		assertNotEquals(0, ar.size());
 	}
 	

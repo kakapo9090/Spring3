@@ -31,7 +31,11 @@ public class BankbookService {
 	
 	
 	public List<BankbookDTO> getList(Pager pager){
-		pager.makeNum(); 	//페이지번호를 먼저 찾고
+		System.out.println(pager.getKind());
+		System.out.println(pager.getSearch());
+		//totalCount 구하기
+		Long totalCount = bankbookDAO.getCount(pager);
+		pager.makeNum(totalCount); 	//페이지번호를 먼저 찾고
 		pager.makeRow();	// 그 다음 행을 찾는다
 		return bankbookDAO.getList(pager);
 	}
