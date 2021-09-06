@@ -58,7 +58,7 @@ public class BankbookDAOTest extends MyJunitTest{
 	}
 	
 	
-	//@Test
+	@Test
 	public void getListTest() {
 		List<BankbookDTO> ar = bankbookDAO.getList(Pager pager);
 		assertNotEquals(0, ar.size());
